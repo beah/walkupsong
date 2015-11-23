@@ -25,14 +25,6 @@ var QuestionSchema = new Schema({
         // make this a required field
         required: 'name cannot be blank'
     },
-    shortname: {
-        type: String,
-        default: '',
-        trim: true,     
-        unique: true,
-        // make this a required field
-        required: 'name cannot be blank',
-    }
 });
 
 // add the model name and schema to the mongoose model.

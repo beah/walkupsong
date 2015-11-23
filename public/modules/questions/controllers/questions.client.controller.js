@@ -1,28 +1,20 @@
 'use strict';
 
-angular.module('questions').controller('QuestionsController', ['$scope', '$location', 'Questions',
-	function($scope, $location, Questions) {
-		/// Create new Question
-        $scope.create = function() {
-        	//Crate new Question object
-        	var question = new Questions ({
-        		shortname: this.shortname,
-        		query: this.query
-        	});
+angular.module('questions').controller('QuestionsController', ['$scope', '$location',
+    function($scope, $location) {
 
+        // Create new Question
+        $scope.create = function() {
             // Redirect after save
-            question.$save(function(response) {
-            	$location.path('questions/' + response._id);
+            $location.path('questions');
 
             // Clear form fields
             $scope.name = '';
-        }, function(errorResponse) {
-        	$scope.error = errorResponse.data.message;
-        });
-	};
-	    // Find a list of Questions
+        };
+
+        // Find a list of questions
         $scope.find = function() {
-           $scope.questions = Questions.query();
+            $scope.questions = Questions.query();
         };
     }
 ]);
